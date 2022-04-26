@@ -39,9 +39,9 @@ def resize_to_fit(image, width, height):
 
 
 
-model_filename = "/home/rmb/documents/FYP/final-year-project/atck_mdl1/captcha_model.hdf5"
-model_labels_filename = "/home/rmb/documents/FYP/final-year-project/atck_mdl1/model_labels.dat"
-input_folder = "/home/rmb/documents/FYP/final-year-project/atck_mdl1/content/Samples"
+model_filename = "captcha_model.hdf5"
+model_labels_filename = "model_labels.dat"
+input_folder = "Samples"
 
 with open(model_labels_filename, "rb") as f:
     lb = pickle.load(f)
@@ -168,8 +168,8 @@ frame.pack()
 path = ""
 def details():
 
-    root.filename = filedialog.askopenfilename(initialdir="/content/Samples", title="Select a file")
-    #my_label = Label(root, text=root.filename).pack()
+    root.filename = filedialog.askopenfilename(initialdir="Samples", title="Select a file")
+    my_label = Label(root, text=root.filename).pack()
     path = root.filename
     
     img = ImageTk.PhotoImage(Image.open(root.filename))
