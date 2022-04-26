@@ -1,5 +1,8 @@
 from tkinter import *
 from PIL import ImageTk,Image
+
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from tkinter import filedialog
 #from solve_captcha import solve
 from keras.models import load_model
@@ -36,9 +39,9 @@ def resize_to_fit(image, width, height):
 
 
 
-model_filename = "captcha_model.hdf5"
-model_labels_filename = "model_labels.dat"
-input_folder = "/content/Samples"
+model_filename = "/home/rmb/documents/FYP/final-year-project/atck_mdl1/captcha_model.hdf5"
+model_labels_filename = "/home/rmb/documents/FYP/final-year-project/atck_mdl1/model_labels.dat"
+input_folder = "/home/rmb/documents/FYP/final-year-project/atck_mdl1/content/Samples"
 
 with open(model_labels_filename, "rb") as f:
     lb = pickle.load(f)
@@ -48,7 +51,7 @@ model = load_model(model_filename)
 def solve(image_file):
     image = cv2.imread(image_file)
     kernel = np.ones((5,5), np.uint8)
-    #cv2.imshow("Input", image)
+    cv2.imshow("Input", image)
     erosion_image = cv2.erode(image, kernel, iterations=1) 
     img = cv2.dilate(image, kernel, iterations=1)
     img = Image.fromarray(img)
