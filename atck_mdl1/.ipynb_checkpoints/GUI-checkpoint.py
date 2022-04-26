@@ -51,7 +51,7 @@ model = load_model(model_filename)
 def solve(image_file):
     image = cv2.imread(image_file)
     kernel = np.ones((5,5), np.uint8)
-    #cv2.imshow("Input", image)
+    cv2.imshow("Input", image)
     erosion_image = cv2.erode(image, kernel, iterations=1) 
     img = cv2.dilate(image, kernel, iterations=1)
     img = Image.fromarray(img)
@@ -160,17 +160,16 @@ def solve(image_file):
     cv2.waitKey()
 
 ##################
-root =Tk()
+root = Tk()
 root.title("CAPTCHA_SOLVER")
 root.geometry("500x500")
 frame = Frame(root)
 frame.pack()
 path = ""
-
 def details():
 
     root.filename = filedialog.askopenfilename(initialdir="Samples", title="Select a file")
-   #my_label = Label(root, text=root.filename).pack()
+    my_label = Label(root, text=root.filename).pack()
     path = root.filename
     
     img = ImageTk.PhotoImage(Image.open(root.filename))
@@ -205,5 +204,3 @@ L8.pack(side = TOP)
 B1 = Button(bottomframe, text ="Select", command = details)
 
 B1.pack()
-
-root.mainloop()
