@@ -1,8 +1,8 @@
 from tkinter import *
 from PIL import ImageTk,Image
 
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+import os                                    #set tf compiler flags
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'     #set tf compiler flags
 from tkinter import filedialog
 #from solve_captcha import solve
 from keras.models import load_model

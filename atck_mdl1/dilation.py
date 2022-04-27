@@ -8,9 +8,11 @@ import numpy as np
 import timeit
 from PIL import Image
 
-input_folder = "/content/Samples"
-dilation_output_folder = "/content/Dilation"
-output_folder = "/content/Letter extracted images"
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'     #set tf compiler flags
+
+input_folder = "Samples"
+dilation_output_folder = "Dilation"
+output_folder = "Letter extracted images"
 input_files = glob.glob(os.path.join(input_folder, "*"))
 counts = {}
 start_time = time.time()

@@ -9,6 +9,10 @@ from keras.models import Sequential
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.layers.core import Flatten, Dense
 from keras.layers import LSTM, Reshape
+import os                                    #set tf compiler flags
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'     #set tf compiler flags
+
+
 #from helpers import resize_to_fit
 import imutils
 import cv2

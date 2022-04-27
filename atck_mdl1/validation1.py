@@ -1,5 +1,5 @@
-import os
-os.environ['TFF_CPP_MIN_LOG_LEVEL']='2'
+import os                                    #set tf compiler flags
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'     #set tf compiler flags
 import cv2
 import pickle
 import os.path
