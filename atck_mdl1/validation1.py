@@ -81,8 +81,6 @@ cm = confusion_matrix(Y_test, y_pred)"""
 
 # Compare predictions to y_test labels
 test_score = accuracy_score(Y_test, y_pred)
-print('Accuracy Score on test data set: 84.520006823561')
+print('Accuracy Score: ',test_score)
 precision = precision_score(Y_test, y_pred, average = "macro")
-print('Precision: 85.591876000541')
-print('Recall score: 84.990273197611')
-print('F1 score: 84.995003128762')
+print('Precision: ',precision)
