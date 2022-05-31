@@ -41,7 +41,7 @@ def resize_to_fit(image, width, height):
     return image
 
 
-input_folder = "Letter extracted images/PE(overlap)"
+input_folder = "Letter extracted images/XOR"
 model_filename = "captcha_model.hdf5"
 model_labels_filename = "model_labels.dat"
 
@@ -81,7 +81,8 @@ cm = confusion_matrix(Y_test, y_pred)"""
 
 # Compare predictions to y_test labels
 test_score = accuracy_score(Y_test, y_pred)
-print('Accuracy Score :',test_score*100)
 precision = precision_score(Y_test, y_pred, average = "macro")
-print('Precision:',precision*100)
+
+print('Accuracy :',test_score*100)
+print('Precision :',precision*100)
 
