@@ -16,6 +16,9 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sn
 #from helpers import resize_to_fit
 import imutils
 import cv2
@@ -41,7 +44,7 @@ def resize_to_fit(image, width, height):
     return image
 
 
-input_folder = "Letter extracted images/XOR"
+input_folder = "Letter extracted images/PE(extraction)"
 model_filename = "captcha_model.hdf5"
 model_labels_filename = "model_labels.dat"
 
@@ -76,9 +79,6 @@ y_pred = model.predict(X_test)
 y_pred=np.argmax(y_pred, axis=1)
 Y_test=np.argmax(Y_test, axis=1)
 
-"""from sklearn.metrics import confusion_matrix
-cm = confusion_matrix(Y_test, y_pred)"""
-
 # Compare predictions to y_test labels
 test_score = accuracy_score(Y_test, y_pred)
 precision = precision_score(Y_test, y_pred, average = "macro")
@@ -86,3 +86,8 @@ precision = precision_score(Y_test, y_pred, average = "macro")
 print('Accuracy :',test_score*100)
 print('Precision :',precision*100)
 
+#plot confusion matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(Y_test, y_pred)
+sn.heatmap(cm, annot=True)
+plt.show()
