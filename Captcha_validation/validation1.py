@@ -44,7 +44,7 @@ def resize_to_fit(image, width, height):
     return image
 
 
-input_folder = "Letter extracted images/PE(extraction)"
+input_folder = "Letter extracted images/PE(overlap)"
 model_filename = "captcha_model.hdf5"
 model_labels_filename = "model_labels.dat"
 
@@ -80,11 +80,16 @@ y_pred=np.argmax(y_pred, axis=1)
 Y_test=np.argmax(Y_test, axis=1)
 
 # Compare predictions to y_test labels
-test_score = accuracy_score(Y_test, y_pred)
+accuracy = accuracy_score(Y_test, y_pred)
 precision = precision_score(Y_test, y_pred, average = "macro")
+recall=recall_score(Y_test, y_pred, average="macro")
+f1=f1_score(Y_test, y_pred, average="macro")
 
-print('Accuracy :',test_score*100)
+print("F1 Score : ",f1*100)
+print("Recall Score : ",recall*100)
+print('Accuracy :',accuracy*100)
 print('Precision :',precision*100)
+
 
 #plot confusion matrix
 from sklearn.metrics import confusion_matrix

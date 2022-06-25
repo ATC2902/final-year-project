@@ -16,6 +16,9 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
+import pandas as pd
+import seaborn as sn
+import matplotlib.pyplot as plt
 #from helpers import resize_to_fit
 import imutils
 import cv2
@@ -76,11 +79,21 @@ y_pred = model.predict(X_test)
 y_pred=np.argmax(y_pred, axis=1)
 Y_test=np.argmax(Y_test, axis=1)
 
-"""from sklearn.metrics import confusion_matrix
-cm = confusion_matrix(Y_test, y_pred)"""
-
 # Compare predictions to y_test labels
-test_score = accuracy_score(Y_test, y_pred)
-print('Accuracy Score: ',test_score*100)
+accuracy = accuracy_score(Y_test, y_pred)
 precision = precision_score(Y_test, y_pred, average = "macro")
-print('Precision: ',precision*100)
+recall=recall_score(Y_test, y_pred, average="macro")
+f1=f1_score(Y_test, y_pred, average="macro")
+
+print("F1 Score : ",f1*100)
+print("Recall Score : ",recall*100)
+print('Accuracy :',accuracy*100)
+print('Precision :',precision*100)
+
+
+#plot confusion matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(Y_test, y_pred)
+sn.heatmap(cm, annot=True)
+plt.show()
+ 
