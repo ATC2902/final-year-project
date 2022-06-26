@@ -44,7 +44,7 @@ def resize_to_fit(image, width, height):
     return image
 
 
-input_folder = "Letter extracted images/PE(overlap)"
+input_folder = "Letter extracted images/MA"
 model_filename = "captcha_model.hdf5"
 model_labels_filename = "model_labels.dat"
 
@@ -68,7 +68,7 @@ for image_file in paths.list_images(input_folder):
 data = np.array(data, dtype="float") / 255.0
 labels = np.array(labels)
 
-(X_train, X_test, Y_train, Y_test) = train_test_split(data, labels, test_size=0.95, random_state=0)
+(X_train, X_test, Y_train, Y_test) = train_test_split(data, labels, test_size=0.98, random_state=0)
 
 lb = LabelBinarizer().fit(Y_train)
 Y_train = lb.transform(Y_train)
